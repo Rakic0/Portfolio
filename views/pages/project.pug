@@ -1,0 +1,31 @@
+extends ../base.pug
+
+block variables
+  - var template = 'project'
+
+block content
+  .project
+    .project__wrapper
+      .project__about
+        .project__about__titles
+          h3.project__title=project.data.title
+          span.project__role=project.data.role
+
+        .project__description
+          !=PrismicH.asHTML(project.data.description).replace(/<p>/g, '<p data-animation="paragraph">')
+
+        .project__info
+          each item in project.data.info
+            div
+              h5.project__info__label=item.info_label
+              p.project__info__text=item.info_text
+        
+      .project__showcases
+        video.project__showcase__video(playsinlin autoplay muted loop)
+          source(src=project.data.project_showcase, type="video/webm")
+
+        .project__images
+          each image in project.data.full_website
+            img.project__img(data-src=image.image.url, alt=image.image.alt)
+    
+      include ../partials/footer

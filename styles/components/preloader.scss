@@ -1,0 +1,21 @@
+.preloader {
+  @extend %cover;
+  @extend %center;
+
+  display: flex;
+  text-align: center;
+
+  background-color: $color-gallery;
+  color: $color-merlin;
+
+  z-index: z('preloader');
+}
+
+.preloader__number {
+  overflow: hidden;
+  font-size: 6rem;
+}
+
+.preloader__number__text {
+  display: inline-block;
+}

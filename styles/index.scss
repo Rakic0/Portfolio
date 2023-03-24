@@ -1,0 +1,21 @@
+@import './base/reset.scss';
+
+@import './utils/variable.scss';
+@import './utils/functions.scss';
+@import './utils/mixins.scss';
+@import './utils/vendors.scss';
+@import './utils/resonsive.scss';
+
+@import './shared/links.scss';
+@import './shared/pages.scss';
+
+@import './base/fonts.scss';
+@import './base/base.scss';
+
+@import './components/preloader.scss';
+
+@import './pages/home/home.scss';
+@import './pages/project/project.scss';
+
+@import './layout/navigation.scss';
+@import './layout/footer.scss';

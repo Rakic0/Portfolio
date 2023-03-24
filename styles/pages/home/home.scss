@@ -1,0 +1,239 @@
+.home {
+  @extend %page;
+
+  background-color: $color-gallery;
+}
+
+.home__wrapper {
+  @extend %page__wrapper;
+}
+
+.home__inner {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 95%;
+  padding: 0 1rem;
+  margin: 0 auto;
+
+  padding-top: 30rem;
+  margin-bottom: 10rem;
+}
+
+.home__full-name {
+  font-family: $font-lato;
+  font-size: 17rem;
+  font-weight: 900;
+  line-height: 0.7;
+  margin-left: -1rem;
+}
+
+.home__email {
+  @extend %link--hidden;
+
+  font-family: $font-lato;
+  font-style: italic;
+  font-size: 3rem;
+  margin-top: 1rem;
+
+  line-height: 1.4;
+}
+
+.home__bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10rem;
+  margin-bottom: 7rem;
+}
+
+.home__job-title {
+  font-family: $font-lato;
+  font-weight: 700;
+  font-size: 4.8rem;
+  align-self: end;
+}
+
+.home__info {
+  font-family: $font-lato;
+  font-weight: 900;
+  font-size: 3rem;
+  text-align: right;
+}
+
+.home__socials {
+  display: flex;
+
+  justify-content: space-between;
+  gap: 1rem;
+
+  margin-top: 4rem;
+}
+
+.home__social__link {
+  @extend %link--hidden;
+
+  font-weight: 700;
+  font-style: italic;
+  font-size: 2.4rem;
+  opacity: 0.7;
+  line-height: 1.4;
+}
+
+.home__line {
+  background-color: $color-merlin;
+  width: 100%;
+  height: 0.8rem;
+}
+
+// PROJECTS
+
+.home__projects {
+  width: 95%;
+  padding: 0 1rem;
+  margin: 0 auto;
+  margin-bottom: 10rem;
+}
+
+.home__project {
+  display: grid;
+  grid-template-columns: 45fr 55fr;
+  gap: 3.5rem;
+}
+
+.home__project__label {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+  margin-bottom: 5rem;
+  display: block;
+}
+.home__project__titles {
+  margin-bottom: 8rem;
+}
+
+.home__project__title {
+  font-weight: 700;
+  font-size: 8rem;
+  margin-left: -0.5rem;
+  display: inline-block;
+}
+
+.home__project__role {
+  font-size: 1.8rem;
+  font-weight: 400;
+  display: block;
+}
+
+.home__project__description {
+  font-size: 3rem;
+  font-weight: 400;
+  margin-bottom: 3rem;
+  max-width: 60rem;
+}
+
+.home__project__explore {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.8rem;
+  opacity: 0.5;
+}
+
+.home__project__explore--link {
+  display: flex;
+  align-items: center;
+}
+
+.home__project__explore--arrow {
+  width: 4.3rem;
+  height: 0.8rem;
+}
+
+.home__project__video__holder {
+  background-color: $color-merlin;
+  padding: 0.75rem;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem rgba($color-merlin, 0.3);
+}
+
+.home__project__video__link {
+}
+
+.col--2 {
+  position: relative;
+}
+
+.home__project__video {
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.home__project__image__holder {
+  position: absolute;
+  bottom: -3rem;
+  left: -4rem;
+}
+
+.home__project__image {
+  width: 20rem;
+}
+
+// About
+
+.home__footer {
+  background-color: $color-merlin;
+  color: $color-gallery;
+  margin-bottom: -1rem;
+  padding: 10rem 0;
+
+  &__wrapper {
+    width: 95%;
+    padding: 0 1rem;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: $color-gallery;
+      position: absolute;
+      bottom: -10rem;
+      left: 0;
+      opacity: 0.6;
+    }
+  }
+}
+
+.home__about__label,
+.home__skills__label {
+  font-size: 8rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.home__about__description {
+  font-size: 1.8rem;
+  opacity: 0.75;
+  width: 50rem;
+}
+
+.home__skills__container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.home__skills_skill {
+  font-size: 1.8rem;
+  font-weight: 700;
+  border: 1px solid $color-gallery;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+}

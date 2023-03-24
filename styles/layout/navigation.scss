@@ -1,0 +1,58 @@
+.navigation {
+  @extend %cover;
+  color: $color-merlin;
+  z-index: z('navigation');
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 1rem;
+  height: auto;
+
+  pointer-events: none;
+}
+
+.navigation__list {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.navigation__item__home {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+}
+
+.navigation__link__cv {
+  font-family: $font-lato;
+  font-size: 3.6rem;
+  cursor: pointer;
+
+  display: block;
+  line-height: 1;
+}
+
+.navigation__link {
+  @extend %link--hidden;
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.5;
+}
+
+.navigation__link__cv {
+  color: $color-gallery;
+  background-color: $color-merlin;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 13.3rem;
+  height: 4.5rem;
+
+  border-radius: 1rem;
+}

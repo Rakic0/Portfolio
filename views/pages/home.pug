@@ -1,0 +1,73 @@
+extends ../base.pug
+
+block variables
+  - var template = 'home'
+
+block content
+  .home
+    .home__wrapper
+      .home__inner 
+        .home__titles
+          h1.home__full-name=home.data.full_name
+          a.home__email(href=`mailto:${home.data.email}`)=home.data.email 
+
+        .home__bottom 
+          .home__job-titles
+            each el in home.data.job_titles
+              h3.home__job-title=el.job_title
+          
+          .home__info
+            h3.home__info__experience=home.data.experience
+            h3.home__info__location
+              span=home.data.location
+              | , 
+              span.home__info__time=home.data.time
+            h3.home__info__get-in-touch=home.data.get_in_touch
+
+            .home__socials
+              each social in home.data.socials
+                a.home__social__link(href=social.social_link.url target="_blank")=social.social_text
+
+        .home__line
+
+      .home__projects
+        each item in home.data.body
+          .home__project 
+            .col--1 
+              span.home__project__label!=item.primary.label.toUpperCase()
+              
+              .home__project__titles
+                h3.home__project__title=item.primary.title
+                span.home__project__role=item.primary.role
+              
+              p.home__project__description=item.primary.description
+
+              div.home__project__explore
+                a.home__project__explore--link(href=Link(item.primary.relation))!=item.primary.explore.toUpperCase()
+                  svg.home__project__explore--arrow(xmlns='http://www.w3.org/2000/svg', viewBox='0 0 45.413 10.826')
+                    path#Path_9(data-name='Path 9', d='M39.636,9.989l4.364-4m0,0-4.364-4m4.364,4H1', fill='none', stroke='#3f3b37', stroke-linecap='round', stroke-linejoin='round', stroke-width='2')
+            .col--2
+              .home__project__video__holder
+                a.home__project__video__link(href=Link(item.primary.relation))
+                  video.home__project__video(playsinlin autoplay muted loop)
+                    source(src=item.primary.video, type="video/webm")
+              
+              .home__project__image__holder
+                img.home__project__image(data-src=item.primary.image.url alt=item.primary.image.alt)
+      
+      .home__footer
+        .home__footer__wrapper
+          .home__about
+            h3.home__about__label!=home.data.about_me_label.toUpperCase()
+            
+            div.home__about__description
+              !=PrismicH.asHTML(home.data.about_me_text).replace(/<p>/g, '<p data-animation="paragraph">')
+
+          .home__skills
+            h3.home__skills__label!=home.data.skills_label.toUpperCase()
+
+            .home__skills__container
+              each item in home.data.skills
+                .home__skills_skill=item.skills_skill
+
+      include ../partials/footer

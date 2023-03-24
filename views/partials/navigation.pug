@@ -1,0 +1,10 @@
+nav.navigation 
+  ul.navigation__list
+    if params === '/project/ecosoft'
+      li.navigation__item 
+        a.navigation__link(href=Link(navigation.data.home)) Back to Home
+      li.navigation__item 
+        a.navigation__link__cv(href=navigation.link_to_cv) CV
+    else
+      li.navigation__item__home
+        a.navigation__link__cv(href=navigation.link_to_cv) CV

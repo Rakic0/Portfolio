@@ -1,0 +1,11 @@
+footer.footer 
+  .footer__wrapper
+    div
+      h3.footer__label=footer.data.label
+      a.footer__email(href=`mailto:${footer.data.email}`)=footer.data.email
+    
+    .footer__socials
+      each item in footer.data.social_links
+        a.footer__social__link(href=item.social_link.url target="_blank")=item.social_text 
+    
+    span.footer__copyright=footer.data.copyright
