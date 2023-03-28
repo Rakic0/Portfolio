@@ -6,19 +6,21 @@ block variables
 block content
   .project
     .project__wrapper
+      a.project__to__home(href=Link(project.data.home)) Back to Home
+
       .project__about
         .project__about__titles
-          h3.project__title=project.data.title
-          span.project__role=project.data.role
+          h3.project__title(data-animation="label")=project.data.title
+          span.project__role(data-animation="label")=project.data.role
 
         .project__description
-          !=PrismicH.asHTML(project.data.description).replace(/<p>/g, '<p data-animation="paragraph">')
+          !=PrismicH.asHTML(project.data.description).replace(/<p>/g, '<p data-animation="label">')
 
         .project__info
           each item in project.data.info
             div
-              h5.project__info__label=item.info_label
-              p.project__info__text=item.info_text
+              h5.project__info__label(data-animation="label")=item.info_label
+              p.project__info__text(data-animation="paragraph")=item.info_text
         
       .project__showcases
         video.project__showcase__video(playsinlin autoplay muted loop)

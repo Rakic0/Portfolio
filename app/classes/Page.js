@@ -1,7 +1,15 @@
 import gsap from 'gsap';
 import each from 'lodash/each';
-import Prefix from 'prefix';
+import map from 'lodash/map';
 import normalizeWheel from 'normalize-wheel';
+import Prefix from 'prefix';
+
+import Title from 'animations/Title';
+import Paragraph from 'animations/Paragraph';
+import Label from 'animations/Label';
+import Highlight from 'animations/Highlight';
+
+import AsyncLoad from 'classes/AsyncLoad';
 
 export default class Page {
   constructor({ id, element, elements }) {
@@ -10,10 +18,16 @@ export default class Page {
     this.selector = element;
     this.selectorChildren = {
       ...elements,
+
+      animationsTitles: '[data-animation="title"]',
+      animationsParagraphs: '[data-animation="paragraph"]',
+      animationsLabels: '[data-animation="label"]',
+      animationsHighlights: '[data-animation="highlight"]',
+
+      preloaders: '[data-src]',
     };
 
     this.transformPrefix = Prefix('transform');
-
     this.onMouseWheelEvent = this.onMouseWheel.bind(this);
   }
 
@@ -45,23 +59,82 @@ export default class Page {
         }
       }
     });
+
+    this.createAnimations();
+    this.createPreloader();
+  }
+
+  createPreloader() {
+    this.preloaders = map(this.elements.preloaders, (element) => {
+      return new AsyncLoad({ element });
+    });
+  }
+
+  createAnimations() {
+    this.animations = [];
+
+    // Highlight
+    this.animationsHighlights = map(
+      this.elements.animationsHighlights,
+      (element) => {
+        return new Highlight({
+          element,
+        });
+      }
+    );
+
+    this.animations.push(...this.animationsHighlights);
+
+    // Titles
+    this.animationsTitles = map(this.elements.animationsTitles, (element) => {
+      return new Title({
+        element,
+      });
+    });
+
+    this.animations.push(...this.animationsTitles);
+
+    // Paragraph
+    this.animationsParagraphs = map(
+      this.elements.animationsParagraphs,
+      (element) => {
+        return new Paragraph({
+          element,
+        });
+      }
+    );
+
+    this.animations.push(...this.animationsParagraphs);
+
+    // Labels
+    this.animationsLabels = map(this.elements.animationsLabels, (element) => {
+      return new Label({
+        element,
+      });
+    });
+
+    this.animations.push(...this.animationsLabels);
   }
 
   // Animations
-  show() {
+  show(animation) {
     return new Promise((resolve) => {
       this.animationIn = gsap.timeline();
 
-      this.animationIn.fromTo(
-        this.element,
-        {
-          autoAlpha: 0,
-        },
-        {
-          autoAlpha: 1,
-          onComplete: resolve,
-        }
-      );
+      if (animation) {
+        this.animationIn = animation;
+      } else {
+        this.animationIn = gsap.timeline();
+        this.animationIn.fromTo(
+          this.element,
+          {
+            autoAlpha: 0,
+          },
+          {
+            autoAlpha: 1,
+          }
+        );
+      }
 
       this.animationIn.call((_) => {
         this.addEventListeners();
@@ -86,8 +159,6 @@ export default class Page {
   onMouseWheel(e) {
     const { pixelY } = normalizeWheel(e);
     this.scroll.target += pixelY;
-
-    console.log(this.scroll.target);
   }
 
   update() {
@@ -114,11 +185,13 @@ export default class Page {
 
   onResize() {
     if (this.elements.wrapper) {
-      console.log(this.elements.wrapper.clientHeight);
-
       this.scroll.limit =
         this.elements.wrapper.clientHeight - window.innerHeight;
     }
+
+    console.log(this.scroll.limit);
+
+    each(this.animations, (animation) => animation.onResize());
   }
 
   addEventListeners() {

@@ -26,7 +26,7 @@
   font-family: $font-lato;
   font-size: 17rem;
   font-weight: 900;
-  line-height: 0.7;
+  line-height: 0.8;
   margin-left: -1rem;
 }
 
@@ -37,8 +37,6 @@
   font-style: italic;
   font-size: 3rem;
   margin-top: 1rem;
-
-  line-height: 1.4;
 }
 
 .home__bottom {
@@ -78,7 +76,6 @@
   font-style: italic;
   font-size: 2.4rem;
   opacity: 0.7;
-  line-height: 1.4;
 }
 
 .home__line {
@@ -131,6 +128,7 @@
   font-weight: 400;
   margin-bottom: 3rem;
   max-width: 60rem;
+  line-height: 1.1;
 }
 
 .home__project__explore {

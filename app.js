@@ -43,9 +43,6 @@ const handleLinkResolver = (doc) => {
     return `/project/${doc.slug}`;
   }
 
-  console.log(doc);
-
-  // Default to homepage
   return '/';
 };
 
@@ -58,8 +55,6 @@ app.use((req, res, next) => {
 
   res.locals.Link = handleLinkResolver;
   res.locals.params = req.originalUrl;
-
-  console.log(req.originalUrl);
 
   res.locals.PrismicH = PrismicH;
   // res.locals.Numbers = (index) => {
@@ -110,8 +105,6 @@ app.get('/project/:uid', async (req, res) => {
   const project = await api.getByUID('project', req.params.uid, {
     fetchLinks: 'project.title',
   });
-
-  console.log(project);
 
   res.status(200).render('pages/project', {
     ...defaults,

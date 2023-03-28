@@ -34,6 +34,7 @@ class App {
     };
 
     this.page = this.pages[this.template];
+
     this.page.create();
     this.page.show();
   }
@@ -74,6 +75,7 @@ class App {
       this.page.create();
       this.page.onResize();
       this.page.show();
+      this.addLinkListeners();
     } else {
       console.error('Error');
     }
@@ -110,7 +112,7 @@ class App {
 
   addLinkListeners() {
     const links = document.querySelectorAll(
-      '.home__project__explore--link, .home__project__video__link'
+      '.home__project__explore--link, .home__project__video__link, .project__to__home'
     );
 
     each(links, (link) => {
