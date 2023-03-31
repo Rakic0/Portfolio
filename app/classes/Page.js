@@ -28,7 +28,10 @@ export default class Page {
     };
 
     this.transformPrefix = Prefix('transform');
+
     this.onMouseWheelEvent = this.onMouseWheel.bind(this);
+    this.onTouhcStartEvent = this.onTouchStart.bind(this);
+    this.onTouhcMoveEvent = this.onTouchMove.bind(this);
   }
 
   create() {
@@ -161,6 +164,20 @@ export default class Page {
     this.scroll.target += pixelY;
   }
 
+  onTouchStart(e) {
+    this.touchStart = e.touches[0].clientY;
+  }
+
+  onTouchMove(e) {
+    this.touchCurrent = e.touches[0].clientY;
+
+    if (this.touchStart > this.touchCurrent) {
+      this.scroll.target += 15;
+    } else if (this.touchStart < this.touchCurrent) {
+      this.scroll.target += -15;
+    }
+  }
+
   update() {
     this.scroll.target = gsap.utils.clamp(
       0,
@@ -186,8 +203,7 @@ export default class Page {
   onResize() {
     if (this.elements.wrapper) {
       this.scroll.limit =
-        this.elements.wrapper.getBoundingClientRect().height -
-        window.innerHeight;
+        this.elements.wrapper.clientHeight - window.innerHeight;
     }
 
     each(this.animations, (animation) => animation.onResize());
@@ -195,6 +211,9 @@ export default class Page {
 
   addEventListeners() {
     window.addEventListener('mousewheel', this.onMouseWheelEvent);
+
+    window.addEventListener('touchmove', this.onTouhcMoveEvent);
+    window.addEventListener('touchstart', this.onTouhcStartEvent);
   }
 
   removeEventListeners() {
