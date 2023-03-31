@@ -27,15 +27,6 @@
   right: 2rem;
 }
 
-.navigation__link__cv {
-  font-family: $font-lato;
-  font-size: 3.6rem;
-  cursor: pointer;
-
-  display: block;
-  line-height: 1;
-}
-
 .navigation__link {
   @extend %link--hidden;
   font-size: 2rem;
@@ -55,4 +46,9 @@
   height: 4.5rem;
 
   border-radius: 1rem;
+
+  font-size: 3.6rem;
+  cursor: pointer;
+
+  line-height: 1;
 }

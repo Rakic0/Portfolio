@@ -17,16 +17,16 @@ block content
               h3.home__job-title(data-animation="label")=el.job_title
           
           div.home__info
-            h3.home__info__experience(data-animation="label")=home.data.experience
+            h3.home__info__experience=home.data.experience
             h3.home__info__location
-              span(data-animation="label")=home.data.location
+              span=home.data.location
               | , 
-              span.home__info__time(data-animation="label")=home.data.time
-            h3.home__info__get-in-touch(data-animation="label")=home.data.get_in_touch
+              span.home__info__time=home.data.time
+            h3.home__info__get-in-touch=home.data.get_in_touch
 
             .home__socials
               each social in home.data.socials
-                a.home__social__link(href=social.social_link.url target="_blank" data-animation="label")=social.social_text
+                a.home__social__link(href=social.social_link.url target="_blank")=social.social_text
 
         .home__line
 

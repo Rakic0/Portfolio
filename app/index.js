@@ -14,6 +14,7 @@ class App {
     this.addEventListeners();
     this.addLinkListeners();
 
+    this.onResize();
     this.update();
   }
 
@@ -73,7 +74,9 @@ class App {
       this.page = this.pages[this.template];
 
       this.page.create();
-      this.page.onResize();
+
+      this.onResize();
+
       this.page.show();
       this.addLinkListeners();
     } else {
@@ -112,7 +115,7 @@ class App {
 
   addLinkListeners() {
     const links = document.querySelectorAll(
-      '.home__project__explore--link, .home__project__video__link, .project__to__home'
+      '.home__project__explore--link, .home__project__video__link, .navigation__link__to__home'
     );
 
     each(links, (link) => {

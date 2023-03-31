@@ -97,6 +97,30 @@
   display: grid;
   grid-template-columns: 45fr 55fr;
   gap: 3.5rem;
+  position: relative;
+
+  @include media('<phone') {
+    display: flex;
+    flex-direction: column;
+    padding: 0 2rem;
+  }
+
+  &:not(:last-of-type) {
+    margin-bottom: 30rem;
+
+    &::after {
+      content: '';
+      width: 100%;
+      height: 0.1rem;
+
+      position: absolute;
+      left: 0;
+      bottom: -15rem;
+
+      background-color: $color-merlin;
+      opacity: 0.25;
+    }
+  }
 }
 
 .home__project__label {
@@ -136,6 +160,10 @@
   font-weight: 700;
   font-size: 1.8rem;
   opacity: 0.5;
+
+  &:hover .home__project__explore--arrow {
+    margin-left: 1rem;
+  }
 }
 
 .home__project__explore--link {
@@ -144,6 +172,7 @@
 }
 
 .home__project__explore--arrow {
+  transition: all 0.3s $ease-in-out;
   width: 4.3rem;
   height: 0.8rem;
 }
@@ -193,6 +222,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
 
+    @include media('<phone') {
+      display: flex;
+      flex-direction: column;
+    }
+
     position: relative;
 
     &::after {
@@ -209,6 +243,12 @@
   }
 }
 
+.home__about {
+  @include media('<phone') {
+    margin-bottom: 5rem;
+  }
+}
+
 .home__about__label,
 .home__skills__label {
   font-size: 8rem;
@@ -220,6 +260,10 @@
   font-size: 1.8rem;
   opacity: 0.75;
   width: 50rem;
+
+  & p {
+    line-height: 1.1;
+  }
 }
 
 .home__skills__container {
@@ -234,4 +278,6 @@
   border: 1px solid $color-gallery;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
+
+  cursor: default;
 }

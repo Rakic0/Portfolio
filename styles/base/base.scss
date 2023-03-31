@@ -16,7 +16,7 @@ html {
   overflow: hidden;
 
   @include media('<phone') {
-    font-size: calc(100vw / 750 * 10);
+    font-size: calc(100vw / 768 * 10);
   }
 }
 

@@ -22,8 +22,7 @@ export default class Highlight extends Animation {
         autoAlpha: 1,
         scale: 1,
         ease: 'expo.out',
-        duration: 2,
-        stagger: 1,
+        duration: 2.5,
       }
     );
   }

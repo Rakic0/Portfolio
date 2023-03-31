@@ -186,10 +186,9 @@ export default class Page {
   onResize() {
     if (this.elements.wrapper) {
       this.scroll.limit =
-        this.elements.wrapper.clientHeight - window.innerHeight;
+        this.elements.wrapper.getBoundingClientRect().height -
+        window.innerHeight;
     }
-
-    console.log(this.scroll.limit);
 
     each(this.animations, (animation) => animation.onResize());
   }

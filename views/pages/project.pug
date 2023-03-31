@@ -5,23 +5,42 @@ block variables
 
 block content
   .project
-    .project__wrapper
-      a.project__to__home(href=Link(project.data.home)) Back to Home
+    a.navigation__link__to__home(href=Link(project.data.home)) Back to Home
 
+    .project__wrapper
       .project__about
         .project__about__titles
           h3.project__title(data-animation="label")=project.data.title
           span.project__role(data-animation="label")=project.data.role
 
-        .project__description
-          !=PrismicH.asHTML(project.data.description).replace(/<p>/g, '<p data-animation="label">')
+        .project__more__info__desktop
+          .project__description
+            !=PrismicH.asHTML(project.data.description).replace(/<p>/g, '<p data-animation="label">')
 
-        .project__info
-          each item in project.data.info
-            div
-              h5.project__info__label(data-animation="label")=item.info_label
-              p.project__info__text(data-animation="paragraph")=item.info_text
+          .project__info
+            each item in project.data.info
+              div
+                h5.project__info__label(data-animation="label")=item.info_label
+                p.project__info__text(data-animation="paragraph")=item.info_text
         
+        .project__more__info__phone
+          .project__accordion
+            .project__accordion__item
+              button.project__accordion__button
+                h2.project__accordion__header Description
+              
+              .project__accordion__panel
+                .project__accordion__body
+                  !=PrismicH.asHTML(project.data.description).replace(/<p>/g, '<p data-animation="label">')
+            
+            each item in project.data.info
+              .project__accordion__item
+                button.project__accordion__button
+                  h2.project__accordion__header=item.info_label
+              
+                .project__accordion__panel
+                  .project__accordion__body=item.info_text
+
       .project__showcases
         video.project__showcase__video(playsinlin autoplay muted loop)
           source(src=project.data.project_showcase, type="video/webm")
@@ -29,5 +48,5 @@ block content
         .project__images
           each image in project.data.full_website
             img.project__img(data-src=image.image.url, alt=image.image.alt)
-    
+      
       include ../partials/footer

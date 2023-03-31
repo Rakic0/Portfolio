@@ -11,13 +11,19 @@
   position: relative;
 }
 
-.project__to__home {
+.navigation__link__to__home {
+  @extend %link--hidden;
+
   position: fixed;
   top: 4rem;
   left: 4rem;
 
   font-size: 2rem;
   font-weight: 900;
+
+  line-height: 1.4;
+
+  z-index: z('link');
 }
 
 .project__about {
@@ -29,6 +35,80 @@
   width: 95%;
   padding: 0 1rem;
   margin: 0 auto;
+
+  @include media('<phone') {
+    height: auto;
+    margin: 10rem auto;
+    padding: 2rem 0;
+    align-content: start;
+  }
+}
+
+.project__more__info__desktop {
+  @include media('<phone') {
+    display: none;
+  }
+}
+
+.project__more__info__phone {
+  display: none;
+
+  @include media('<phone') {
+    display: block;
+  }
+}
+
+.project__accordion {
+  width: 100%;
+}
+
+.project__accordion__item {
+  position: relative;
+
+  &:not(:last-of-type) {
+    &::after {
+      content: '';
+      width: 100%;
+      height: 0.1rem;
+
+      position: absolute;
+      left: 0;
+      bottom: 0;
+
+      background-color: $color-merlin;
+      opacity: 0.25;
+    }
+  }
+}
+
+.project__accordion__header {
+  font-size: 2.7rem;
+  font-weight: 700;
+  position: relative;
+  text-align: left;
+  margin: 3rem 0;
+
+  &::after {
+    content: '+';
+    position: absolute;
+    font-size: 3rem;
+    color: $color-merlin;
+    top: 0;
+    right: 0;
+  }
+}
+
+.project__accordion__button {
+  width: 100%;
+  padding: 0;
+}
+
+.project__accordion__panel {
+  display: none;
+}
+
+.project__accordion__body {
+  font-size: 2rem;
 }
 
 .project__about__titles {
@@ -49,11 +129,17 @@
 
   margin-bottom: 15rem;
   display: inline-block;
+  line-height: 1.1;
 }
 
 .project__info {
   display: flex;
   justify-content: space-between;
+
+  @include media('<phone') {
+    flex-direction: column;
+    gap: 2rem;
+  }
 }
 
 .project__info__label {
@@ -75,12 +161,15 @@
 
 .project__showcase__video {
   width: 100%;
-  height: 88.3rem;
 }
 
 .project__img {
   width: 100%;
   height: 88.3rem;
+
+  @include media('<phone') {
+    height: 30rem;
+  }
 
   &:last-of-type {
     margin-bottom: 10rem;
