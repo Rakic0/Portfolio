@@ -6,6 +6,14 @@ block variables
 block content
   .project
     a.navigation__link__to__home(href=Link(project.data.home)) Back to Home
+    a.link__to__project(href=project.data.link_to_project.url target="_blank")
+      svg.link__to__project__svg(xmlns='http://www.w3.org/2000/svg' viewbox='0 0 30.616 30.614')
+        path(d='M8.69,36.351,32.775,12.266V30.383l3.721.07-.035-21.87-2.81-2.81-21.87-.035.07,3.721H29.967L5.88,33.54l2.808,2.81Z' transform='translate(-5.88 -5.737)' fill='#ececec')
+    
+    if project.data.link_to_github.url
+      a.link__to__github(href=project.data.link_to_github.url target="_blank")
+        svg.link__to__github__svg(xmlns='http://www.w3.org/2000/svg' width='43.228' height='38.25' viewbox='0 0 43.228 38.25')
+          path(d='M21.632,0C9.67,0,0,8.766,0,19.61c0,8.668,6.2,16.006,14.791,18.6,1.075.2,1.468-.422,1.468-.941,0-.455-.035-2.013-.035-3.637C10.207,34.8,8.953,31.3,8.953,31.3a5.193,5.193,0,0,0-2.4-2.857c-1.969-1.2.143-1.2.143-1.2a4.516,4.516,0,0,1,3.331,2.013c1.934,2.987,5.049,2.143,6.3,1.623a4.03,4.03,0,0,1,1.361-2.63c-4.8-.455-9.849-2.143-9.849-9.675a7.265,7.265,0,0,1,2.22-5.259,6.472,6.472,0,0,1,.215-5.195s1.826-.52,5.945,2.013a22.84,22.84,0,0,1,10.816,0c4.119-2.532,5.945-2.013,5.945-2.013a6.471,6.471,0,0,1,.215,5.195,7.127,7.127,0,0,1,2.221,5.259c0,7.533-5.049,9.188-9.885,9.675A4.419,4.419,0,0,1,27,31.882c0,2.63-.035,4.74-.035,5.389,0,.52.394,1.137,1.468.942,8.6-2.6,14.791-9.935,14.791-18.6C43.263,8.766,33.558,0,21.632,0Z' fill='#ececec' fill-rule='evenodd')
 
     .project__wrapper
       .project__about
@@ -23,24 +31,6 @@ block content
                 h5.project__info__label(data-animation="label")=item.info_label
                 p.project__info__text(data-animation="paragraph")=item.info_text
         
-        .project__more__info__phone
-          .project__accordion
-            .project__accordion__item
-              button.project__accordion__button
-                h2.project__accordion__header Description
-              
-              .project__accordion__panel
-                .project__accordion__body
-                  !=PrismicH.asHTML(project.data.description).replace(/<p>/g, '<p data-animation="label">')
-            
-            each item in project.data.info
-              .project__accordion__item
-                button.project__accordion__button
-                  h2.project__accordion__header=item.info_label
-              
-                .project__accordion__panel
-                  .project__accordion__body=item.info_text
-
       .project__showcases
         video.project__showcase__video(playsinlin autoplay muted loop)
           source(src=project.data.project_showcase, type="video/webm")

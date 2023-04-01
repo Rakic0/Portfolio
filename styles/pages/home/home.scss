@@ -139,6 +139,10 @@
   font-size: 8rem;
   margin-left: -0.5rem;
   display: inline-block;
+
+  @include media('<phone') {
+    line-height: 0.8;
+  }
 }
 
 .home__project__role {
