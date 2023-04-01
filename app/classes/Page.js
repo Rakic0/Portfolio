@@ -172,9 +172,10 @@ export default class Page {
     this.touchCurrent = e.touches[0].clientY;
 
     if (this.touchStart > this.touchCurrent) {
-      this.scroll.target += 30;
+      console.log(this.touchCurrent);
+      this.scroll.target += this.touchCurrent / 10;
     } else if (this.touchStart < this.touchCurrent) {
-      this.scroll.target += -30;
+      this.scroll.target += -this.touchCurrent / 10;
     }
   }
 
