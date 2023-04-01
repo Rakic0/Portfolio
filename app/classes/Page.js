@@ -173,9 +173,9 @@ export default class Page {
 
     if (this.touchStart > this.touchCurrent) {
       console.log(this.touchCurrent);
-      this.scroll.target += this.touchCurrent / 10;
+      this.scroll.target += this.touchCurrent / 100;
     } else if (this.touchStart < this.touchCurrent) {
-      this.scroll.target += -this.touchCurrent / 10;
+      this.scroll.target += -this.touchCurrent / 100;
     }
   }
 
