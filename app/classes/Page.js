@@ -28,10 +28,12 @@ export default class Page {
     };
 
     this.transformPrefix = Prefix('transform');
+    this.scrollOffset = 0;
 
     this.onMouseWheelEvent = this.onMouseWheel.bind(this);
-    this.onTouhcStartEvent = this.onTouchStart.bind(this);
-    this.onTouhcMoveEvent = this.onTouchMove.bind(this);
+    this.onTouchStartEvent = this.onTouchStart.bind(this);
+    // this.onTouchMoveEvent = this.onTouchMove.bind(this);
+    this.onTouchEndEvent = this.onTouchEnd.bind(this);
   }
 
   create() {
@@ -168,15 +170,24 @@ export default class Page {
     this.touchStart = e.touches[0].clientY;
   }
 
-  onTouchMove(e) {
-    this.touchCurrent = e.touches[0].clientY;
+  // onTouchMove(e) {
+  //   this.touchCurr = e.touches[0].clientY;
 
-    if (this.touchStart > this.touchCurrent) {
-      console.log(this.touchCurrent);
-      this.scroll.target += this.touchCurrent / 100;
-    } else if (this.touchStart < this.touchCurrent) {
-      this.scroll.target += -this.touchCurrent / 100;
-    }
+  //   if (this.touchCurr > this.touchStart) {
+  //     this.scroll.target += -5;
+
+  //     this.scrollOffset += -5;
+  //   } else if (this.touchCurr < this.touchStart) {
+  //     this.scroll.target += 5;
+
+  //     this.scrollOffset += 5;
+  //   }
+  // }
+
+  onTouchEnd(e) {
+    this.touchEnd = e.changedTouches[0].clientY;
+
+    this.scroll.target += (this.touchEnd - this.touchStart) * -1;
   }
 
   update() {
@@ -213,8 +224,9 @@ export default class Page {
   addEventListeners() {
     window.addEventListener('mousewheel', this.onMouseWheelEvent);
 
-    window.addEventListener('touchmove', this.onTouhcMoveEvent);
-    window.addEventListener('touchstart', this.onTouhcStartEvent);
+    window.addEventListener('touchstart', this.onTouchStartEvent);
+    // window.addEventListener('touchmove', this.onTouchMoveEvent);
+    window.addEventListener('touchend', this.onTouchEndEvent);
   }
 
   removeEventListeners() {
