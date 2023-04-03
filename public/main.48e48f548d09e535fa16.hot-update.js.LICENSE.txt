@@ -1,0 +1,11 @@
+/*! components/Preloader */
+
+/*! lodash/each */
+
+/*! pages/Home */
+
+/*! pages/Project */
+
+/*!**********************!*\
+  !*** ./app/index.js ***!
+  \**********************/

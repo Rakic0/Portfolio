@@ -125,6 +125,10 @@ class App {
         const { href } = link;
 
         this.onChange({ url: href });
+        window.scrollTo({
+          top: 0,
+          left: 0,
+        });
       };
     });
   }

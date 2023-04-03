@@ -4,9 +4,9 @@
   box-sizing: border-box;
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
+// ::-webkit-scrollbar {
+//   display: none;
+// }
 
 ::selection {
   color: $color-gallery;
@@ -22,6 +22,12 @@ html {
 
   @include media('<phone') {
     font-size: calc(100vw / 768 * 10);
+
+    position: static;
+    height: auto;
+
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -34,6 +40,11 @@ body {
   font-family: $font-lato;
 
   cursor: default;
+
+  @include media('<phone') {
+    position: static;
+    height: auto;
+  }
 }
 
 a {
@@ -52,6 +63,12 @@ button {
 
 .content {
   @extend %cover;
+
+  @include media('<phone') {
+    position: static;
+
+    height: auto;
+  }
 }
 
 [data-animation='title'],

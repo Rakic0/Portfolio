@@ -57,17 +57,6 @@ app.use((req, res, next) => {
   res.locals.params = req.originalUrl;
 
   res.locals.PrismicH = PrismicH;
-  // res.locals.Numbers = (index) => {
-  //   return index === 0
-  //     ? 'One'
-  //     : index === 1
-  //     ? 'Two'
-  //     : index === 2
-  //     ? 'Three'
-  //     : index === 3
-  //     ? 'Four'
-  //     : '';
-  // };
 
   next();
 });

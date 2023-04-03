@@ -31,9 +31,6 @@ export default class Page {
     this.scrollOffset = 0;
 
     this.onMouseWheelEvent = this.onMouseWheel.bind(this);
-    this.onTouchStartEvent = this.onTouchStart.bind(this);
-    // this.onTouchMoveEvent = this.onTouchMove.bind(this);
-    this.onTouchEndEvent = this.onTouchEnd.bind(this);
   }
 
   create() {
@@ -166,30 +163,6 @@ export default class Page {
     this.scroll.target += pixelY;
   }
 
-  onTouchStart(e) {
-    this.touchStart = e.touches[0].clientY;
-  }
-
-  // onTouchMove(e) {
-  //   this.touchCurr = e.touches[0].clientY;
-
-  //   if (this.touchCurr > this.touchStart) {
-  //     this.scroll.target += -5;
-
-  //     this.scrollOffset += -5;
-  //   } else if (this.touchCurr < this.touchStart) {
-  //     this.scroll.target += 5;
-
-  //     this.scrollOffset += 5;
-  //   }
-  // }
-
-  onTouchEnd(e) {
-    this.touchEnd = e.changedTouches[0].clientY;
-
-    this.scroll.target += (this.touchEnd - this.touchStart) * -1;
-  }
-
   update() {
     this.scroll.target = gsap.utils.clamp(
       0,
@@ -223,10 +196,6 @@ export default class Page {
 
   addEventListeners() {
     window.addEventListener('mousewheel', this.onMouseWheelEvent);
-
-    window.addEventListener('touchstart', this.onTouchStartEvent);
-    // window.addEventListener('touchmove', this.onTouchMoveEvent);
-    window.addEventListener('touchend', this.onTouchEndEvent);
   }
 
   removeEventListeners() {

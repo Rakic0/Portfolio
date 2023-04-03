@@ -2,6 +2,10 @@
   @extend %page;
 
   background-color: $color-gallery;
+
+  @include media('<phone') {
+    position: static;
+  }
 }
 
 .home__wrapper {

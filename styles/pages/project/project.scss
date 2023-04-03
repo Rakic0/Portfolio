@@ -3,6 +3,10 @@
 
   color: $color-merlin;
   background-color: $color-gallery;
+
+  @include media('<phone') {
+    position: static;
+  }
 }
 
 .project__wrapper {
