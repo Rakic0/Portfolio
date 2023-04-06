@@ -1,9 +1,6 @@
 {
   "name": "website-template",
   "version": "1.0.0",
-  "engines": {
-    "node": "18.x"
-  },
   "scripts": {
     "backend:build": "node app.js",
     "backend:development": "nodemon app.js",
