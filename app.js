@@ -82,8 +82,6 @@ app.get('/', async (req, res) => {
   const api = await initApi(req);
   const defaults = await handleRequest(api);
 
-  console.log(defaults.navigation);
-
   res.status(200).render('pages/home', {
     ...defaults,
   });

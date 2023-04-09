@@ -191,6 +191,8 @@ export default class Page {
         this.elements.wrapper.clientHeight - window.innerHeight;
     }
 
+    console.log(this.scroll.limit);
+
     each(this.animations, (animation) => animation.onResize());
   }
 
