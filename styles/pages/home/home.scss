@@ -143,6 +143,7 @@
   font-size: 8rem;
   margin-left: -0.5rem;
   display: inline-block;
+  line-height: 0.89;
 
   @include media('<phone') {
     line-height: 0.8;
@@ -206,7 +207,7 @@
 
 .home__project__image__holder {
   position: absolute;
-  bottom: 4.4rem;
+  bottom: -3rem;
   left: -7rem;
 }
 
