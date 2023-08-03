@@ -195,10 +195,10 @@ export default class Page {
   }
 
   addEventListeners() {
-    window.addEventListener('mousewheel', this.onMouseWheelEvent);
+    window.addEventListener('wheel', this.onMouseWheelEvent);
   }
 
   removeEventListeners() {
-    window.removeEventListener('mousewheel', this.onMouseWheelEvent);
+    window.removeEventListener('wheel', this.onMouseWheelEvent);
   }
 }
